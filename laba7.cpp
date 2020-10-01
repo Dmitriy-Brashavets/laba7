@@ -9,46 +9,53 @@ using std::vector;
 
 void Task1() {
 	cout << "task1: " << endl;
-	vector <int> vec, rez;
+	vector <int> vec, res;
 	vec = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13 };
-	for (int i = 0; i < vec.size(); i += 2)
-		rez.push_back(vec[i]);
-	for (int i = 1; i < vec.size(); i += 2)
-		rez.push_back(vec[i]);
+	for (auto i = vec.begin(); i < vec.end(); i += 2)
+	{
+		res.push_back(*i);
+		if ((i + 1) == vec.end()) break;
+	}
+	for (auto i = vec.begin() + 1; i < vec.end(); i += 2)
+	{
+		res.push_back(*i);
+		if ((i + 1) == vec.end()) break;
+	}
 	cout << "initial: ";
-	for (int el : vec)
-		cout << el << " ";
-	cout << endl << "rezult: ";
-	for (int el : rez)
-		cout << el << " ";
+	for (auto el = vec.begin(); el != vec.end(); el++)
+		cout << *el << " ";
+	cout << endl << "result: ";
+	for (auto el = res.begin(); el != res.end(); el++)
+		cout << *el << " ";
 	cout << endl << "========================" << endl;
 }
 
 void Task2() {
 	cout << "task2: " << endl;
 	vector <int> vec;
-	int rez = 1;
+	int res = 1;
 	vec = { 1 , 5, 2, 3, -6, 5, 5, 2 };
-	int iMax, iMin;
+	auto iMax = vec.begin();
+	auto iMin = vec.begin();
 	int max = -1, min = 100;
-	for (int i = 0; i < vec.size(); i++) {
-		if (max < abs(vec[i])) {
-			max = abs(vec[i]);
+	for (auto i = vec.begin(); i < vec.end(); i++) {
+		if (max < abs(*i)) {
+			max = abs(*i);
 			iMax = i;
 		}
-		if (min > abs(vec[i])) {
-			min = abs(vec[i]);
+		if (min > abs(*i)) {
+			min = abs(*i);
 			iMin = i;
 		}
 	}
 	if (iMin > iMax)
 		swap(iMin, iMax);
-	for (int i = iMin + 1; i < iMax; i++)
-		rez *= vec[i];
+	for (auto i = iMin + 1; i < iMax; i++)
+		res *= *i;
 	cout << "initial: ";
-	for (int el : vec)
-		cout << el << " ";
-	cout << "\nrez: " << rez;
+	for (auto el = vec.begin(); el < vec.end(); el++)
+		cout << *el << " ";
+	cout << "\nres: " << res;
 }
 
 int main() {
