@@ -11,21 +11,21 @@ void Task1() {
 	cout << "task1: " << endl;
 	vector <int> vec, res;
 	vec = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13 };
-	for (auto i = vec.begin(); i < vec.end(); i += 2)
+	for (vector<int>::iterator i = vec.begin(); i < vec.end(); i += 2)
 	{
 		res.push_back(*i);
 		if ((i + 1) == vec.end()) break;
 	}
-	for (auto i = vec.begin() + 1; i < vec.end(); i += 2)
+	for (vector<int>::iterator i = vec.begin() + 1; i < vec.end(); i += 2)
 	{
 		res.push_back(*i);
 		if ((i + 1) == vec.end()) break;
 	}
 	cout << "initial: ";
-	for (auto el = vec.begin(); el != vec.end(); el++)
+	for (vector<int>::iterator el = vec.begin(); el != vec.end(); el++)
 		cout << *el << " ";
 	cout << endl << "result: ";
-	for (auto el = res.begin(); el != res.end(); el++)
+	for (vector<int>::iterator el = res.begin(); el != res.end(); el++)
 		cout << *el << " ";
 	cout << endl << "========================" << endl;
 }
@@ -35,10 +35,10 @@ void Task2() {
 	vector <int> vec;
 	int res = 1;
 	vec = { 1 , 5, 2, 3, -6, 5, 5, 2 };
-	auto iMax = vec.begin();
-	auto iMin = vec.begin();
+	vector<int>::iterator iMax = vec.begin();
+	vector<int>::iterator iMin = vec.begin();
 	int max = -1, min = 100;
-	for (auto i = vec.begin(); i < vec.end(); i++) {
+	for (vector<int>::iterator i = vec.begin(); i < vec.end(); i++) {
 		if (max < abs(*i)) {
 			max = abs(*i);
 			iMax = i;
@@ -50,10 +50,10 @@ void Task2() {
 	}
 	if (iMin > iMax)
 		swap(iMin, iMax);
-	for (auto i = iMin + 1; i < iMax; i++)
+	for (vector<int>::iterator i = iMin + 1; i < iMax; i++)
 		res *= *i;
 	cout << "initial: ";
-	for (auto el = vec.begin(); el < vec.end(); el++)
+	for (vector<int>::iterator el = vec.begin(); el < vec.end(); el++)
 		cout << *el << " ";
 	cout << "\nres: " << res;
 }
